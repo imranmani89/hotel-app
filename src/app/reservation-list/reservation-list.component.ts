@@ -15,4 +15,8 @@ export class ReservationListComponent implements OnInit {
   }
 
   reservations: Reservation[] = [];
+
+  deleteReservation(id : string){
+    this.reservationService.deleteReservation(id);
+  }
 }
