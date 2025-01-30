@@ -14,9 +14,9 @@ import { ReservationService } from './reservation.service';
   ],
   imports: [
     CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule,
+    FormsModule, //for inputs forms
+    ReactiveFormsModule, //for form validations
+    RouterModule, //for routing or anchors
     HomeModule
   ],
   providers:[
