@@ -1,4 +1,49 @@
 <app-home></app-home>
-<form [FormGroup]="employeeForm" (ngSubmit)="onSubmit()">
-
-</form>>
+<div class="card">
+    <div class="card-body">
+        <div class="card-header bg-white">Add/Update Employee</div>
+        <div class="container mt-2">
+            <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+                <div class="row mb-6">
+                    <div class="col-md-6">
+                        <label class="form-label">Name:</label>
+                        <input class="form-control" formControlName="name" />
+                        <div class="text-danger small"
+                            *ngIf="employeeForm.get('name')?.invalid && employeeForm.get('name')?.touched">
+                            Employee Name is Required
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Father Name:</label>
+                        <input class="form-control" formControlName="fatherName" />
+                        <div class="small text-danger"
+                            *ngIf="employeeForm.get('fatherName')?.invalid && employeeForm.get('fatherName')?.touched">
+                            Employee's Father Name is Required
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-6">
+                    <div class="col-md-6">
+                        <label class="form-label">Date of Birth:</label>
+                        <input class="form-control" formControlName="DOB" type="date" />
+                        <div class="small text-danger"
+                            *ngIf="employeeForm.get('DOB')?.invalid && employeeForm.get('DOB')?.touched">
+                            Date of Birth is Required
+                        </div>
+                    </div>
+                    <div class="col-md-6 align-content-center px-md-4 pt-md-4 pt-sm-2">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                        <label class="form-check-label mx-2" formControlName="isActive">
+                            Active
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 px-md-4 pt-md-4 pt-sm-2">
+                        <button class="btn btn-primary" type="submit" [disabled]="employeeForm.invalid">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
