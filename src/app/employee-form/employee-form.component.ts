@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { EmployeeService } from '../employee/employee.service';
+import { Employee } from '../models/employee';
 @Component({
   selector: 'app-employee-form',
   templateUrl: './employee-form.component.html',
@@ -8,20 +10,21 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class EmployeeFormComponent implements OnInit {
   employeeForm: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private employeeService: EmployeeService) { }
 
   ngOnInit(): void {
     this.employeeForm = this.formBuilder.group({
       name: ['', Validators.required],
       fatherName: ['', Validators.required],
       DOB: ['', Validators.required],
-      isActive: new FormControl()
+      isActive: [false]
     });
   }
 
   onSubmit(): void {
     if (this.employeeForm.valid) {
-      alert("hello moi boy");
+      let employee : Employee =  this.employeeForm.value;
+      console.log(this.employeeForm.value);
     }
   }
 }
